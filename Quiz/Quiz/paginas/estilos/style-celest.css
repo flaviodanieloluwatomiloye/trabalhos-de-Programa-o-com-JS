@@ -1,0 +1,120 @@
+/* 1. Reset Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Celeste'; 
+    src: url('../../Fontes/Celeste.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000;
+    font-family: Celeste;
+}
+
+/* 2. Fundo da Tela */
+.imagem-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5); /* Escurece o fundo para dar destaque ao quiz */
+}
+
+/* 3. Container do Quiz */
+.quiz-container {
+    width: 100%;
+    max-width: 750px; /* Largura ideal para centralizar e compactar o layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px; /* Espaçamento perfeito entre as caixas de resposta */
+    padding: 20px;
+}
+
+/* 4. Título da Pergunta */
+.Pergunta {
+    background: rgba(16, 12, 30, 0.85);
+    border: 3px solid #3b2d54; 
+    padding: 20px 50px;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+    width: 100%;
+}
+
+.Pergunta h1 {
+    color: white;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 5. Estrutura das Caixas de Opções */
+[class^="pergunta"] {
+    position: relative; 
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+[class^="pergunta"]:hover {
+    transform: scale(1.02); 
+    filter: brightness(1.2);
+}
+
+/* 6. IMAGEM DO BANNER */
+.caixa-da-pergunta {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+.caixa-da-pergunta img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Deforma e estica a imagem para preencher a nova altura perfeitamente */
+    display: block;
+}
+
+/* 7. O TEXTO DA OPÇÃO */
+[class^="pergunta"] p {
+    position: relative;
+    z-index: 10; /* Garante que o texto fique por cima da imagem */
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-left: 120px;    /* Afasta o início do texto da borda esquerda */
+    padding-right: 120px; /* Margem de segurança para o texto não cobrir o rosto do personagem na direita */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Sombra para garantir a leitura perfeita do texto */
+    pointer-events: none;
+}
+
+/* 8. Responsividade para Celulares */
+@media (max-width: 600px) {
+    .Pergunta h1 { font-size: 1.2rem; }
+    .Pergunta { padding: 15px 20px; }
+    .quiz-container { gap: 10px; }
+    [class^="pergunta"] { height: 85px; }
+    [class^="pergunta"] p { font-size: 0.95rem; margin-left: 25px; padding-right: 80px; }
+}

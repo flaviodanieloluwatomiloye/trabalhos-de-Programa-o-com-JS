@@ -1,0 +1,111 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #d8d8d8;
+    color: #333;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.box-busca {
+    background: rgb(197, 187, 255);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    border: 1px solid #e2e8f0;
+}
+
+.box-busca h2 {
+    font-size: 15px;
+    color: #4a5568;
+    margin-bottom: 10px;
+}
+
+.search-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.box-busca input {
+    padding: 10px;
+    font-size: 14px;
+    flex-grow: 1;
+    max-width: 280px;
+    min-width: 200px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+}
+
+.box-busca button {
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#resultadoBusca {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #cecece;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+}
+
+.box-grafico {
+    background: rgb(164, 173, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(116, 116, 116, 0.527);
+    border: 1px solid #e2e8f0;
+    height: 400px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.box-grafico h2 {
+    font-size: 13px;
+    color: #cccccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.canvas-container {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        /* Muda para apenas 1 coluna, empilhando todos os gráficos */
+        grid-template-columns: 1fr; 
+    }
+    
+    .box-grafico {
+        /* Reduz um pouco a altura em telas menores para não sumir com o gráfico */
+        height: 340px; 
+    }
+}

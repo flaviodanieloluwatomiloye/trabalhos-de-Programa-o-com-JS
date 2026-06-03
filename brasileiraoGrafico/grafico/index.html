@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Paulistão</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>📊 Dashboard de Estatísticas — Paulistão</h1>
+    </header>
+
+    <div class="box-busca">
+        <h2>🔎 Buscar Estatísticas do Time</h2>
+        <div class="search-group">
+            <input type="text" id="buscaTime" placeholder="Ex: Santos">
+            <button onclick="buscar()">Buscar</button>
+        </div>
+        <p id="resultadoBusca"></p>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <div class="box-grafico">
+            <h2>Gráfico 1: Desempenho e Ordenação (Todos os Times)</h2>
+            <div class="canvas-container">
+                <canvas id="grafico1"></canvas>
+            </div>
+        </div>
+
+        <div class="box-grafico">
+            <h2>Gráfico 2: Times que Passaram para a Próxima Fase (Top 8)</h2>
+            <div class="canvas-container">
+                <canvas id="grafico2"></canvas>
+            </div>
+        </div>
+
+        <div class="box-grafico">
+            <h2>Gráfico 3: Os 4 Times com Maior Saldo de Gols</h2>
+            <div class="canvas-container">
+                <canvas id="grafico3"></canvas>
+            </div>
+        </div>
+
+        <div class="box-grafico">
+            <h2>Gráfico 4: Os 8 Melhores Times (Baseado na Pontuação)</h2>
+            <div class="canvas-container">
+                <canvas id="grafico4"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="scriptgraf.js"></script>
+</body>
+</html>

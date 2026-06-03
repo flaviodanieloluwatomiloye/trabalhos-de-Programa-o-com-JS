@@ -1,0 +1,126 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Castelvania'; 
+    src: url('../../Fontes/Castelvania.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000;
+    font-family: Castelvania;
+}
+
+/* Imagem de fundo que ocupa a tela toda */
+.imagem-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.45); /* Escurece sutilmente o fundo para destacar as caixas */
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Distância perfeita entre as caixinha de opção */
+    padding: 20px;
+}
+
+.pergunta-titulo {
+    background: rgba(18, 12, 32, 0.88); 
+    border: 3px solid #3c2f56; /* Borda estilizada */
+    border-radius: 35px;
+    padding: 22px 50px;
+    margin-bottom: 12px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.pergunta-titulo h1 {
+    color: #ffffff;
+    font-size: 1.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.opcao-card {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Altura ideal: o menos achatada que consgui */
+    display: flex;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.opcao-card:hover {
+    transform: scale(1.02); /* Cresce levemente */
+    filter: brightness(1.25); /* Dá um destaque iluminado */
+}
+
+/* Container da imagem que fica por baixo do texto */
+.caixa-imagem-fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Força a imagem a se deformar e preencher a caixa sem sobrar espaços */
+.caixa-imagem-fundo img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+    display: block;
+}
+
+.opcao-card p {
+    position: relative;
+    z-index: 10; /* Mantém o texto na camada da frente */
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-left: 20vw; /* Empurra o texto para não colar na borda esquerda */
+    padding-right: 130px; /* Margem da direita para o texto não passar por cima do rosto do personagem */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.95); 
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .pergunta-titulo h1 { font-size: 1.15rem; }
+    .pergunta-titulo { padding: 15px 20px; }
+    .quiz-container { gap: 10px; }
+    
+    .opcao-card { 
+        height: 85px;
+    }
+    .opcao-card p { 
+        font-size: 0.92rem; 
+        margin-left: 25px; 
+        padding-right: 85px; 
+    }
+}
