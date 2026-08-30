@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - FETCH</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Início</a> |
+        <a href="produtos.html">Produtos</a> |
+        <a href="pedidos.html">Pedidos</a> |
+        <a href="usuarios.html">Usuários</a>
+    </nav>
+
+    <h1>Usuários (FakeStore API)</h1>
+    <hr>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>endereço</th>
+                <th>nome</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-usuarios">
+            <!-- linhas geradas dinamicamente via JS -->
+        </tbody>
+    </table>
+
+    <script type="module" src="../js/usuarios.js"></script>
+</body>
+</html>
