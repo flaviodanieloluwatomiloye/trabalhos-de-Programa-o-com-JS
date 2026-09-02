@@ -2,7 +2,7 @@ import { conexao } from '../conexao.js'
 
 async function buscarClienteStatus() {
     console.log('DAO de CLIENTE_STATUS (VIEW)')
-    const sql = `SELECT * FROM vw_cliente_status;`
+    const sql = `SELECT * FROM vwCliente_limiteCredito;`
 
     const conn = await conexao()
     try {
