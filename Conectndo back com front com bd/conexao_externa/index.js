@@ -49,7 +49,7 @@ app.get('/endereco',  async (req, res) => {
      res.json(endereco);
 })
 
-app.get('/clienteStatus', async (req, res) => {
+app.get('/view', async (req, res) => {
     let clienteStatus = await buscarClienteStatus();
     res.json(clienteStatus);
 })
@@ -58,4 +58,3 @@ app.get('/clienteStatus', async (req, res) => {
 app.listen(3000, () => {
   console.log('🚀 Server is running on http://localhost:3000')
 })
- 
