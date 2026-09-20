@@ -1,0 +1,130 @@
+/* 1. Reset Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'RDR2';
+    src: url('../../Fontes/RDR2.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #0b0202;
+    font-family: RDR2;
+}
+
+/* 2. Fundo da Tela */
+.imagem-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.55); /* Escurece para dar o devido destaque ao painel do quiz */
+}
+
+/* 3. Container Principal do Quiz */
+.quiz-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100%;
+    justify-content: center;
+}
+
+/* 4. Caixa do Título da Pergunta*/
+.pergunta-titulo {
+    background: rgba(15, 15, 15, 0.85);
+    border: 3px solid #991b1b; 
+    border-radius: 4px;
+    padding: 15px 35px;
+    margin-bottom: -10px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    z-index: 20;
+    width: 90%;
+    max-width: 600px;
+}
+
+.pergunta-titulo h1 {
+    color: #f3f4f6;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* 5. Container das Placas de Sinalização */
+.placas-container {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 1 / 1; /* Preserva o aspecto quadrado perfeito do conjunto das placas */
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.imagem-placas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.9));
+}
+
+/* 6. Alinhamento dos Textos sobre cada uma das 4 Ripas de Madeira */
+.opcao-texto {
+    position: absolute;
+    width: 76%; /* Delimita o texto dentro dos limites laterais das tábuas */
+    height: 12%; /* Altura proporcional calculada para cada tabua individual */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Coordenadas verticais mapeadas para bater exatamente por cima de cada madeira */
+.opcao-a { top: 7%; }
+.opcao-b { top: 27%; }
+.opcao-c { top: 47%; }
+.opcao-d { top: 66%; }
+
+.opcao-texto:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0px 0px 8px rgba(239, 68, 68, 0.6));
+}
+
+/* Estilo Tipográfico do Texto */
+.opcao-texto p {
+    color: #1c120c; 
+    font-size: 1.02rem;
+    font-weight: 900;
+    padding: 0 15px;
+    line-height: 1.25;
+    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.35); 
+    user-select: none;
+    pointer-events: none; 
+}
+
+@media (max-width: 600px) {
+    .pergunta-titulo h1 { font-size: 1.1rem; }
+    .pergunta-titulo { padding: 12px 20px; }
+    .placas-container { max-width: 440px; }
+    .opcao-texto p { font-size: 0.78rem; line-height: 1.2; padding: 0 10px; }
+}
