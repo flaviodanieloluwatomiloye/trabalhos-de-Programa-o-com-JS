@@ -1,7 +1,7 @@
 import {conexao} from '../conexao.js'
 
-async function incluirCliente(infos){
-    const sql = `INSERT INTO Cliente (id_cliente, nome, sobreNome, cpf, telefone, id_limite, id_endereco) VALUES (?, ?, ?, ?, ?, ?, ?)`
+async function incluirEndereco(infos){
+    const sql = `INSERT INTO Endereco (id_endereco, logradouro, numero, cep, cidade) VALUES (?, ?, ?, ?, ?)`
     const conn = await conexao()
     
     try {
@@ -13,4 +13,4 @@ async function incluirCliente(infos){
       }
 }
 
-export {incluirCliente}
+export {incluirEndereco}

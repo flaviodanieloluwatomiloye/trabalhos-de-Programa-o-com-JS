@@ -1,6 +1,4 @@
 import express from 'express'
-// Importando as funções lógicas do banco de dados (vamos criá-las no passo abaixo)
-// import { listarClientes, buscarClientePorId, inserirCliente, atualizarCliente, deletarCliente } from './DAO/clienteDAO.js'
 import { buscarClientes } from './DAO/cliente/buscar_cliente.js'
 import { buscarLimite } from './DAO/limite_credito/limite_credito.js'
 import { buscarEndereco } from './DAO/endereco/endereco.js'
@@ -8,6 +6,13 @@ import { buscarPedido } from './DAO/pedido/pedido.js'
 import { buscarPedidoProduto } from './DAO/pedidoProduto/produto.js'
 import { buscarProduto } from './DAO/produto/produto.js'
 import { buscarClienteStatus } from './DAO/clienteStatus/cliente_status.js'
+
+import { incluirCliente } from './DAO/cliente/inserir_cliente.js'
+import { incluirEndereco } from './DAO/endereco/inserir_endereco.js'
+import { incluirLimiteCredito } from './DAO/limite_credito/incerir_limite_credito.js'
+import { incluirPedido } from './DAO/pedido/incerir_pedido.js'
+import { incluirPedidoProduto } from './DAO/pedidoProduto/incerir_pedido_produto.js'
+import { incluirProduto } from './DAO/produto/incerir_produto.js'
  
 const app = express()
  
@@ -23,6 +28,7 @@ app.get('/clientes',  async (req, res) => {
      let clientes = await buscarClientes();
      res.json(clientes);
 })
+
  
 app.get('/limiteCredito',  async (req, res) => {
      let limite = await buscarLimite();
@@ -53,6 +59,66 @@ app.get('/view', async (req, res) => {
     let clienteStatus = await buscarClienteStatus();
     res.json(clienteStatus);
 })
+
+
+
+////////////////////////////////////////////////////////////////////////////
+//post
+////////////////////////////////////////////////////////////////////////////
+
+//limitedeCredito
+app.post('/incerirLimiteDeCredito', async (req, res) => {
+     let {id_limite, nome} = req.body
+     let infos = [id_limite, nome]
+     let results = await incluirLimiteCredito(infos)
+
+     res.json(results)
+})
+
+//Produto
+app.post('/incerirProduto', async (req, res) => {
+     let {id_produto, nome, descricao, preco} = req.body
+     let infos = [id_produto, nome, descricao, preco]
+     let results = await incluirProduto(infos)
+ 
+     res.json(results)
+ })
+
+//Pedido
+app.post('/incerirPedido', async (req, res) => {
+     let {numeroPedido, data_elaboracao, id_cliente} = req.body
+     let infos = [numeroPedido, data_elaboracao, id_cliente]
+     let results = await incluirPedido(infos)
+ 
+     res.json(results)
+ })
+
+// Pedido Produto
+ app.post('/incerirPedidoProduto', async (req, res) => {
+     let {id_pedido, id_produto} = req.body
+     let infos = [id_pedido, id_produto]
+     let results = await incluirPedidoProduto(infos)
+ 
+     res.json(results)
+ })
+
+// Endereco
+ app.post('/incerirEndereco', async (req, res) => {
+     let {id_endereco, logradouro, numero, cep, cidade} = req.body
+     let infos = [id_endereco, logradouro, numero, cep, cidade]
+     let results = await incluirEndereco(infos)
+ 
+     res.json(results)
+ })
+
+// Cliente
+ app.post('/incerirCliente', async (req, res) => {
+     let {id_cliente, nome, sobreNome, cpf, telefone, id_limite, id_endereco} = req.body
+     let infos = [id_cliente, nome, sobreNome, cpf, telefone, id_limite, id_endereco]
+     let results = await incluirCliente(infos)
+ 
+     res.json(results)
+ })
 
 // Inicialização do Servidor
 app.listen(3000, () => {

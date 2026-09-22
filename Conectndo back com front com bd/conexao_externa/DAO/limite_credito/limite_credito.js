@@ -2,7 +2,7 @@ import {conexao} from '../conexao.js'
  
 async function buscarLimite(id_limite){
   console.log('DAO de STATUS')
-    const sql = `SELECT * FROM LimiteDeCredito WHERE id_limite = ?;`
+    const sql = `SELECT * FROM LimiteDeCredito;`
     
     const conn = await conexao()
     try {

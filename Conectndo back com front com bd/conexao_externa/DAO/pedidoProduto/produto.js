@@ -2,7 +2,7 @@ import {conexao} from '../conexao.js'
  
 async function buscarPedidoProduto(idPedido){
   console.log('DAO de STATUS')
-    const sql = `SELECT * FROM produto WHERE idPedido = ?;`
+    const sql = `SELECT * FROM produto ;`
     
     const conn = await conexao()
     try {

@@ -2,7 +2,7 @@ import {conexao} from '../conexao.js'
  
 async function buscarEndereco(id_endereco){
   console.log('DAO de STATUS')
-    const sql = `SELECT * FROM endereco WHERE id_endereco = ?;`
+    const sql = `SELECT * FROM endereco;`
     
     const conn = await conexao()
     try {
