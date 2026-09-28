@@ -1,8 +1,8 @@
 import {conexao} from '../conexao.js'
 
-async function deletarCliente(codigo){
+async function deletarPedido(codigo){
     
-    const sql = `DELETE FROM Cliente WHERE id_cliente = ?`
+    const sql = `DELETE FROM Pedido WHERE numeroPedido = ?`
     const conn = await conexao()
     
     try {
@@ -16,4 +16,4 @@ async function deletarCliente(codigo){
       }
 }
 
-export {deletarCliente}
+export {deletarPedido}

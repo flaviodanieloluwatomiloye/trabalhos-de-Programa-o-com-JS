@@ -7,7 +7,7 @@ async function conexao() {
         host: "127.0.0.1", 
         port: 3306,
         user: "root", 
-        password: "OLFADATO1.a@", 
+        password: "", 
         database:"firma_db"
     })
     return pool

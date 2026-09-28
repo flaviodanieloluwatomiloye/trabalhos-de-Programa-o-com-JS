@@ -1,19 +1,16 @@
 import {conexao} from '../conexao.js'
 
-async function editarIntegralmenteCliente(infos, codigo){
-
-    const sql = `UPDATE tbl_cliente SET telefone = ?, nome = ?, limite = ?, id_endereco = ?, id_status = ? WHERE codigo = ${codigo} ;`
+async function editarIntegralmenteCliente(id_cliente, infos){
+    const sql = `UPDATE Cliente SET nome = ?, sobreNome = ?, cpf = ?, telefone = ?, id_limite = ?, id_endereco = ? WHERE id_cliente = ?`
     const conn = await conexao()
-    
     try {
-        // Executar a consulta
-        const [results] = await conn.query(sql,[...infos]);
-
-        await conn.end()
+        const [results] = await conn.query(sql, [...infos, id_cliente]);
         return results
-      } catch (err) {
+    } catch (err) {
         return err.message
-      }
+    } finally {
+        await conn.end()
+    }
 }
 
 export {editarIntegralmenteCliente}
