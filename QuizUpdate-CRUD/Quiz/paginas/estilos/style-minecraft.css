@@ -1,0 +1,187 @@
+/*1. RESET GERAL E CONFIGURAÇÕES DE FONTE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'TituloMine';
+    src: url('../../Fontes/MinecraftTitle.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mine';
+    src: url('../../Fontes/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../BG/BGminecraft.avif') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+/* 2. ESTRUTURA DO CONTAINER DO QUIZ */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    margin-top: -60px; /* Mantém o alinhamento com os assets da imagem de fundo */
+}
+
+/* 3. TEXTO DA PERGUNTA (SUPERIOR) */
+.pergunta-container {
+    text-align: center;
+    margin-bottom: 20px; 
+    margin-top: 30px;
+    width: 100%;
+}
+
+.pergunta-texto {
+    color: #868686;
+    font-size: 30px;
+    font-family: 'TituloMine', sans-serif;
+    line-height: 1.4;
+    text-shadow: 3px 3px 0px #2c2c2c; 
+}
+
+/* 4. CONTAINER DAS OPÇÕES DE RESPOSTA*/
+.opcoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    width: 100%;
+    max-width: 410px;
+    margin-top: 50px;
+}
+
+.botao-opcao {
+    width: 100%;
+    height: 69px; 
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative; /* Pai de posicionamento absoluto da imagem de fundo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+/* Texto da Opção */
+.botao-opcao p {
+    position: relative;
+    z-index: 10; /* Garante que fique na camada acima do botão cinza */
+    color: #E0E0E0;
+    font-family: 'Mine', monospace;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 2px 2px 0px #000000;
+    pointer-events: none;
+    padding: 0 15px;
+}
+
+/* Efeito Hover */
+.botao-opcao:hover {
+    transform: scale(1.02);
+}
+
+/* Elemento da Imagem de Fundo do Botão */
+.caixa-da-pergunta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.caixa-da-pergunta img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Adapta dinamicamente o sprite cinza sem quebrar as bordas */
+    display: block;
+} 
+
+/* 6. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES) */
+
+
+@media (max-width: 768px) {
+    .quiz-container {
+        margin-top: -20px; 
+        padding: 15px;
+    }
+
+    .pergunta-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .pergunta-texto {
+        font-size: 24px; 
+    }
+
+    .opcoes-container {
+        margin-top: 35px; 
+        gap: 12px;
+    }
+
+    .botao-opcao {
+        height: 56px; 
+    }
+
+    .botao-opcao p {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes finos para Smartphones Pequenos (Máximo 480px) */
+@media (max-width: 480px) {
+    .quiz-container {
+        margin-top: 0px; 
+    }
+
+    .pergunta-texto {
+        font-size: 20px;
+        text-shadow: 2px 2px 0px #2c2c2c;
+    }
+
+    .opcoes-container {
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    .botao-opcao {
+        height: 52px; 
+    }
+
+    .botao-opcao p {
+        font-size: 13px; /* Tamanho limite seguro para caber os textos longos dentro do botão */
+        padding: 0 10px;
+    }
+}
+
+/* Correção de segurança para celulares deitados (Landscape) */
+@media (max-height: 500px) {
+    body {
+        overflow-y: auto; /* Adiciona scroll se a altura do aparelho for muito baixa */
+    }
+    .quiz-container {
+        margin-top: 10px;
+        height: auto;
+    }
+    .opcoes-container {
+        margin-top: 15px;
+    }
+}

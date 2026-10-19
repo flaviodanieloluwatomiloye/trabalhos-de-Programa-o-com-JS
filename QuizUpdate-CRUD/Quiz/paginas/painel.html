@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Painel do Quiz</title>
+        <link rel="stylesheet" href="./estilos/style-painel.css">
+    </head>
+    <body>
+        <div class="bg"></div>
+
+        <main class="painel">
+            <header class="painel-topo">
+                <h1>Painel do Quiz</h1>
+                <a href="inicioQuiz.html" class="link-voltar">&larr; Voltar ao quiz</a>
+            </header>
+
+            <nav class="abas" role="tablist">
+                <button type="button" class="aba ativa" data-aba="tentativas" role="tab">Tentativas</button>
+                <button type="button" class="aba" data-aba="usuarios" role="tab">Usuários</button>
+            </nav>
+
+            <p id="mensagem" class="mensagem" role="status" hidden></p>
+
+            <!-- ====== TENTATIVAS ====== -->
+            <section id="aba-tentativas" class="secao">
+                <div class="tabela-rolavel">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Jogador</th>
+                                <th>E-mail</th>
+                                <th>Nota</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-tentativas"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ====== USUÁRIOS ====== -->
+            <section id="aba-usuarios" class="secao" hidden>
+                <div class="tabela-rolavel">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Cadastro</th>
+                                <th>Tentativas</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-usuarios"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Diálogo: editar usuário -->
+        <dialog id="dlg-usuario">
+            <form id="form-usuario" method="dialog">
+                <h2>Editar usuário</h2>
+                <label for="edit-nome">Nome</label>
+                <input type="text" id="edit-nome" minlength="3" maxlength="30" required>
+
+                <label for="edit-email">E-mail</label>
+                <input type="email" id="edit-email" maxlength="50" required>
+
+                <div class="dlg-botoes">
+                    <button type="button" class="btn btn-sec" data-fechar>Cancelar</button>
+                    <button type="submit" class="btn btn-ok">Salvar</button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Diálogo: editar respostas de uma tentativa -->
+        <dialog id="dlg-tentativa">
+            <form id="form-tentativa" method="dialog">
+                <h2 id="tent-titulo">Tentativa</h2>
+                <p id="tent-sub" class="sub"></p>
+                <div id="tent-questoes" class="questoes"></div>
+
+                <div class="dlg-botoes">
+                    <button type="button" class="btn btn-sec" data-fechar>Cancelar</button>
+                    <button type="submit" class="btn btn-ok">Salvar</button>
+                </div>
+            </form>
+        </dialog>
+
+        <script src="../javascript/painelLogica.js"></script>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+/* 1. Reset Padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Zelda'; 
+    src: url('../../Fontes/The\ Wild\ Breath\ of\ Zelda.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #030a06;
+    font-family: Zelda; 
+    padding: 20px 10px;
+}
+
+/* 2. Imagem de Fundo */
+.imagem-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.4); /* Escurece para destacar o menu de opções */
+}
+
+/* 3. Centralizador do Menu */
+.quiz-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 4. Caixa de Diálogo do Zelda */
+.caixa-dialogo-zelda {
+    width: 100%;
+    
+    /* Aplica a imagem do frame/caixa de diálogo como plano de fundo */
+    background-image: url('dialogoZelda.PNG');
+    
+    /* FORÇA a imagem a esticar verticalmente acompanhando todas as opções */
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    
+    /* Espaçamentos internos para respeitar as bordas da caixa */
+    padding: 50px 45px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* 5. Título da Pergunta */
+.pergunta-titulo {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 15px;
+}
+
+.pergunta-titulo h1 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* 6. Lista Vertical de Respostas */
+.opcoes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcao-item {
+    background: rgba(0, 0, 0, 0.4); /* Fundo escuro semitransparente estilo RPG */
+    border: 2px solid #555;
+    border-radius: 4px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.opcao-item:hover {
+    background: rgba(16, 62, 33, 0.6); 
+    border-color: #00ff66; 
+    transform: translateX(5px);
+}
+
+.opcao-item p {
+    color: #e5e5e5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Cor especial para os marcadores */
+.opcao-item strong {
+    color: #ffcc00; 
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+/* 7. Responsividade Completa para Celulares */
+@media (max-width: 600px) {
+    .caixa-dialogo-zelda {
+        padding: 40px 25px; 
+    }
+    .pergunta-titulo h1 {
+        font-size: 1rem;
+    }
+    .opcao-item p {
+        font-size: 0.8rem;
+    }
+    .opcao-item strong {
+        font-size: 0.85rem;
+    }
+}
